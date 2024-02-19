@@ -14,13 +14,10 @@ class Produto extends Model
         'nome', 'valor', 'usuario_id', 'categoria_id',
     ];
 
-    // Relacionamento com usuário
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }
-
-    // Relacionamento com categoria
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);
