@@ -11,7 +11,7 @@ class Usuario extends Model
     protected $table = 'usuarios';
 
     protected $fillable = [
-        'nome', 'email', 'senha',
+        'nome', 'email', 'password',
     ];
 
     public function produtos()
