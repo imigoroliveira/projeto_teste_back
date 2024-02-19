@@ -6,6 +6,9 @@ return [
         'default' => [
             'api' => [
                 'title' => 'L5 Swagger UI',
+                'paths' => [
+                    base_path('public/api-docs/swagger.json'),
+                ],
             ],
 
             'routes' => [
@@ -15,6 +18,7 @@ return [
                 'api' => 'api/documentation',
             ],
             'paths' => [
+                base_path('swagger/api-docs.yaml'),
                 /*
                  * Edit to include full URL in ui for assets
                 */

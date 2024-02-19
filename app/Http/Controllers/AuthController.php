@@ -3,53 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Schemas\UserSchema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-/**
- * @OA\Tag(
- *     name="Auth",
- *     description="Authentication APIs"
- * )
- */
 class AuthController extends Controller
 {
-    /**
-     * @OA\Post(
-     *     path="/api/register",
-     *     tags={"Auth"},
-     *     summary="Register a new user",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name", "email", "password", "password_confirmation"},
-     *             @OA\Property(property="name", type="string", example="John Doe"),
-     *             @OA\Property(property="email", type="string", format="email", example="john.doe@example.com"),
-     *             @OA\Property(property="password", type="string", format="password", example="password"),
-     *             @OA\Property(property="password_confirmation", type="string", format="password", example="password"),
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="User registered successfully",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="user", type="object", ref="#/components/schemas/User"),
-     *             @OA\Property(property="token", type="string", format="JWT", example="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."),
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=422,
-     *         description="Validation error",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object"),
-     *         )
-     *     )
-     * )
-     */
+ 
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -73,7 +36,7 @@ class AuthController extends Controller
         return response()->json(compact('user', 'token'), 201);
     }
 
-    /**
+   /**
      * @OA\Post(
      *     path="/api/login",
      *     tags={"Auth"},
