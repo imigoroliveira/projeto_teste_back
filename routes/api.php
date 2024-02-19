@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProdutosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use App\Http\Controllers\AuthController;
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', 'AuthController@register');
+Route::get('produtos/listar', [ProdutosController::class, 'index']);
+Route::post('produtos/criar', [ProdutosController::class, 'create']);
+Route::post('produtos/editar', [ProdutosController::class, 'update']);
+
+
 Route::get('/api/documentation', function () {
     return redirect('/api/documentation/index.html');
 });
